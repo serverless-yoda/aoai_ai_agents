@@ -1,0 +1,21 @@
+# Core SDKs
+openai==2.6.1                  # Official OpenAI SDK (supports Azure)
+openai-agents==0.4.2           # Agents SDK for multi-agent orchestration
+
+# Networking
+httpx==0.28.1                  # Async HTTP client used by SDKs
+
+# Environment & typing
+python-dotenv==1.2.1           # Load AZURE_* env vars from .env
+typing-extensions>=4.14.1,<5   # Compatible with openai & pydantic v2
+
+# Pydantic & settings (v2)
+pydantic==2.12.3               # Latest stable for Python 3.10+
+pydantic-settings==2.11.0      # Required for BaseSettings in Pydantic v2
+
+# Azure extras (optional for APIM/Key Vault integration)
+#azure-identity==1.25.1
+#azure-keyvault-secrets==4.10.0
+
+# Optional: if you implement custom tools like web search
+#requests==2.32.3
