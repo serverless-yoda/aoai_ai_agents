@@ -9,4 +9,4 @@ class RefundRequestDTO(BaseModel):
     booking_id: str
     customer_email: str
     reason: str
-    requests: List[RefundItemDTO]  # list of items, not self-reference
+    #requests: List[RefundItemDTO]  # list of items, not self-reference

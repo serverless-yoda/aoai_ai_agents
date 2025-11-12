@@ -49,9 +49,11 @@ _PURPOSE_POOL: Final[tuple[str, ...]] = (
     "I want to ask about fuel policy.",
     "I want to check if I can pick up earlier.",
     "I want to ask about cancellation fees.",
-    "I want to ask refund.My email is manuel.agbayani@thlonline.com. Customer id is 999. Its is pricey for me.",
+    "I want to ask refund.My email is serverlessi@xxx.com. Customer id is 999. Its is pricey for me.",
     
 )
+
+
 
 @function_tool
 def get_rental_invoice(booking_id: str, amount: str) -> str:
@@ -113,7 +115,7 @@ async def main() -> None:
                 "You are an AI agent that responds to customers who want to refund "
                 "their booking payment. Be very courteous" ),
             model=model,
-            tools=['process_rental_refund'],
+            tools=[process_rental_refund],
             tool_use_behavior=StopAtTools(stop_at_tool_names=["process_rental_refund"]),
             model_settings=ModelSettings(tool_choice="required")
         )
@@ -144,9 +146,9 @@ async def main() -> None:
                 "call get_booking_status before replying or escalating."
             ),
             model=model,
+            model_settings=ModelSettings(tool_choice="required"),
             tools=[get_booking_status],
-            handoffs=[retention_agent, invoice_agent, refund_agent],
-            model_settings=ModelSettings(tool_choice="required")
+            handoffs=[retention_agent, invoice_agent, refund_agent]            
         )
 
         user_message = user_context
